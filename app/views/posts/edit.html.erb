@@ -1,5 +1,4 @@
-<h1>New Post</h1>
-
+<h1>Edit Post id: <%= @post.id %></h1>
 <% if @post.errors.any? %>
   <ul>
     <% @post.errors.each do |error| %>
@@ -7,7 +6,6 @@
     <% end %>
   </ul>
 <% end %>
-
 <%= form_with model: @post do |form| %>
   <div>
     <%= form.label :title %>
