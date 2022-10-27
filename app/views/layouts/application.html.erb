@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,10 +9,51 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
+  <header class="">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Flix</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+          </ul>
+          <span class="navbar-brand">
+             <%= link_to 'Flix&Chill', posts_path, class: 'nav-link text-dark p-2 bg-info'%>
+          </span>
+          <span class="navbar-brand">
+            <%= link_to 'Post', posts_path, class: 'nav-link text-dark p-2 bg-info'%>
+          </span>
+          <span class="navbar-brand">
+            <%= link_to 'Add Movie', new_post_path, class: 'nav-link text-dark p-2 bg-info' if user_signed_in?%>
+          </span>
+          <span class="navbar-brand">
+            <%= button_to "Log Out", destroy_user_session_path, class: 'nav-link btn btn-sm text-dark bg-info p-2',method: :delete if user_signed_in?%>
+          </span>
+          <span class="navbar-brand">
+            <%= link_to "Login", new_user_session_path, class: 'nav-link text-dark p-2 bg-info' unless user_signed_in? %>
+          </span>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <body class="bg-dark" style="font-family: Sans-Serif, sans-serif, Arial; width: 100%">
+  <div class="mb-5">" "</div>
+  <div class="mb-5">" "</div>
+    <div class="text-center text-light">
+      <p class="notice fs-4"><%= notice %></p>
+      <p class="alert fs-4"><%= alert %></p>
+    </div>
     <%= yield %>
   </body>
+
+  <footer class="mt-4 p-4 fixed-bottom bg-secondary text-dark">
+  <div class="row">
+    <div class="col">
+      <p class="text-center">Design by <a href="#" class="text-warning">MCVG</a></p>
+    </div>
+  </div>
+  </footer>
 </html>

@@ -1,6 +1,18 @@
-<h1>Show Post <%= @post.title %></h1>
 
-<ul>
-  <li><%= @post.title %></li>
-  <li><%= @post.content %></li>
-</ul>
+
+<div class="text-center mb-5">
+  <h1 class="text-light">Show Post: <%= @post.title %></h1>
+</div>
+
+<div class="">
+  <div class="d-flex justify-content-center">
+    <div class="col-sm-3">
+      <div class="card info">
+        <div class="card-body">
+            <p class="fs-3"><b>Title: </b> <%= @post.title %></p>
+            <p class="fs-3"><b>Content: </b><%= @post.content %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

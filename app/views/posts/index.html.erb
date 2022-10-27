@@ -1,26 +1,33 @@
-<h1>Post List</h1>
+<div class="text-center mb-5">
+<h1 class="text-light">Post List</h1>
+</div>
 
-<table class="table table-bordered">
-  <thead class="bg-info">
-    <tr>
-      <td>ID</td>
-      <td>Title</td>
-      <td>Content</td>
-      <td>User</td>
-      <td>Action</td>
-    </tr>
-  </thead>
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.id %></td>
-      <td><%= post.title %></td>
-      <td><%= post.content %></td>
-      <td><%= post.user.email %></td>
-      <td><%= link_to 'Show', post_path(post) %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= button_to 'Delete', post_path(post), class: "btn btn-sm", style: 'background-color: red;', method: :delete, :onclick=>"return confirm('Are you sure you want to delete?')"if post.user == current_user%></td>
-    </tr>
-    <% end %>
-</table>
-
-<%= link_to 'New Post', new_post_path%>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <table class="table table-bordered table-hover table-responsive">
+        <thead class="bg-info">
+          <tr class="text-center">
+            <td>ID</td>
+            <td>Title</td>
+            <td>Content</td>
+            <td>User</td>
+            <td colspan="2">Action</td>
+          </tr>
+        </thead>
+        <% @posts.each do |post| %>
+          <tr class="text-center">
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td><%= post.content %></td>
+            <td><%= post.user.email %></td>
+            <td><%= link_to 'Show', post_path(post)%>
+                <%= link_to 'Edit', edit_post_path(post) if post.user == current_user%>
+            </td>
+            <td><%= button_to 'Delete', post_path(post), class: "btn btn-sm", style: 'background-color: red;', method: :delete, :onclick=>"return confirm('Are you sure you want to delete?')"if post.user == current_user%></td>
+          </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>
